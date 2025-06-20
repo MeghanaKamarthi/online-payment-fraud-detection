@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Predict Fraud</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url("{{ url_for('static', filename='fraud.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 30px;
+    }
+    .navbar a {
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      color: #003366;
+    }
+    .form-container {
+      background-color: white;
+      width: 80%;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+    .predict-btn {
+      width: 40%;
+      margin-top: 30px;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="/">Home</a>
+    <a href="/predict">Predict</a>
+  </div>
+
+  <div class="form-container">
+    <h2>Enter Transaction Details</h2>
+    <form action="/pred" method="POST">
+      <label>Step</label>
+      <input type="text" name="step" required>
+
+      <label>Type</label>
+      <input type="text" name="tx_type" required placeholder="TRANSFER / CASH_OUT">
+
+
+      <label>Amount</label>
+      <input type="text" name="amount" required>
+
+      <label>Old Balance Origin</label>
+      <input type="text" name="oldbalanceOrg" required>
+
+      <label>New Balance Origin</label>
+      <input type="text" name="newbalanceOrig" required>
+
+      <label>Old Balance Dest</label>
+      <input type="text" name="oldbalanceDest" required>
+
+      <label>New Balance Dest</label>
+      <input type="text" name="newbalanceDest" required>
+      <label>is Flagged Fraud</label>
+      <input type="text" name="isFlaggedFraud" required>
+
+      <button type="submit" class="predict-btn">Predict Fraud</button>
+    </form>
+  </div>
+
+</body>
+</html>
